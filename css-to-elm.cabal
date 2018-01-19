@@ -20,4 +20,7 @@ executable css-to-elm
   build-depends:       base >= 4.7 && < 5,
                        flow,
                        text,
-                       css-text
+                       css-text,
+                       http-conduit >= 2.3.0,
+                       aeson,
+                       bytestring
