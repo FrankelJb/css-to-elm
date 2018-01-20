@@ -30,16 +30,16 @@ whiteSpace = many (comment <|> (skip isSpace >> skipWhile isSpace)) >> return ()
 identToken :: Parser String
 identToken = do
   hyphen <- option "" (char '-' >> return "-")
-  lead <- satisfy isAlpha <|> char '_'
-  restT <- (takeWhile (\x -> isAlphaNum x || x == '_'))
+  lead <- satisfy (\c -> c /= '-')
+  restT <- (takeWhile (\x -> isPrint x || x == '_'))
   let rest = unpack restT
   return $ hyphen ++ lead : rest
 
 quotedString :: Parser String
 quotedString = do
-  char '"'
+  _ <- char '"'
   content <- many character
-  char '"'
+  _ <- char '"'
   return $ concat content
   where
     escape = do
