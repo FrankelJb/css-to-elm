@@ -23,4 +23,5 @@ executable css-to-elm
                        css-text,
                        http-conduit >= 2.3.0,
                        aeson,
-                       bytestring
+                       bytestring,
+                       attoparsec
