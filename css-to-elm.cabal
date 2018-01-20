@@ -25,3 +25,26 @@ executable css-to-elm
                        aeson,
                        bytestring,
                        attoparsec
+
+library
+  hs-source-dirs:      src
+  ghc-options:         -Wall
+  build-depends:       base >= 4.7 && < 5,
+                       text,
+                       attoparsec
+  exposed-modules:     CssParser
+  default-language:    Haskell2010
+
+test-suite tests
+  ghc-options:         -Wall
+  type:                exitcode-stdio-1.0
+  main-is:             CssParserSpec.hs
+  hs-source-dirs:      test
+  build-depends:       css-to-elm,
+                       attoparsec,
+                       base,
+                       hspec,
+                       hspec-attoparsec,
+                       text
+  other-modules:       CssParserSpec
+  default-language:    Haskell2010
